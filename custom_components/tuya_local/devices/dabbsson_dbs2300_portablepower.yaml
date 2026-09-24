@@ -1,0 +1,388 @@
+name: Portable power station
+products:
+  - id: hvvsflpzy2kspt23
+    manufacturer: Dabbsson
+    model: DBS2300 Plus
+entities:
+  - entity: sensor
+    class: battery
+    dps:
+      - id: 1
+        type: integer
+        name: sensor
+        unit: "%"
+        class: measurement
+  - entity: sensor
+    translation_key: time_remaining
+    class: duration
+    dps:
+      - id: 2
+        type: integer
+        name: sensor
+        unit: min
+  - entity: sensor
+    class: temperature
+    category: diagnostic
+    dps:
+      - id: 10
+        type: integer
+        name: sensor
+        unit: C
+        class: measurement
+  - entity: switch
+    translation_key: sound
+    category: config
+    dps:
+      - id: 25
+        type: boolean
+        name: switch
+  - entity: binary_sensor
+    class: battery_charging
+    dps:
+      - id: 101
+        type: boolean
+        name: sensor
+  - entity: select
+    name: Light
+    icon: "mdi:led"
+    dps:
+      - id: 102
+        type: string
+        name: option
+        mapping:
+          - dps_val: "off"
+            value: "Off"
+          - dps_val: dim
+            value: Dim
+          - dps_val: bright
+            value: Bright
+          - dps_val: sos
+            value: Emergency
+  - entity: sensor
+    name: Solar input
+    class: power
+    dps:
+      - id: 103
+        type: integer
+        name: sensor
+        unit: W
+        class: measurement
+  - entity: sensor
+    name: AC input
+    class: power
+    dps:
+      - id: 104
+        type: integer
+        name: sensor
+        unit: W
+        class: measurement
+  - entity: sensor
+    name: Pack 1 output
+    class: power
+    category: diagnostic
+    dps:
+      - id: 105
+        type: integer
+        name: sensor
+        unit: W
+        class: measurement
+  - entity: sensor
+    name: Pack 2 output
+    class: power
+    category: diagnostic
+    dps:
+      - id: 106
+        type: integer
+        name: sensor
+        unit: W
+        class: measurement
+  - entity: sensor
+    name: AC output
+    class: power
+    dps:
+      - id: 108
+        type: integer
+        name: sensor
+        unit: W
+        class: measurement
+  - entity: switch
+    name: AC output
+    icon: "mdi:power-socket-de"
+    dps:
+      - id: 109
+        type: boolean
+        name: switch
+  - entity: sensor
+    name: DC output
+    class: power
+    dps:
+      - id: 110
+        type: integer
+        name: sensor
+        unit: W
+        class: measurement
+  - entity: switch
+    name: DC output
+    icon: "mdi:car-battery"
+    dps:
+      - id: 111
+        type: boolean
+        name: switch
+  - entity: switch
+    name: USB output
+    icon: "mdi:usb-port"
+    dps:
+      - id: 112
+        type: boolean
+        name: switch
+  - entity: sensor
+    name: USB-A1 output
+    class: power
+    category: diagnostic
+    dps:
+      - id: 113
+        type: integer
+        name: sensor
+        unit: W
+        class: measurement
+  - entity: sensor
+    name: USB-A2 output
+    class: power
+    category: diagnostic
+    dps:
+      - id: 114
+        type: integer
+        name: sensor
+        unit: W
+        class: measurement
+  - entity: sensor
+    name: USB-A3 output
+    class: power
+    category: diagnostic
+    dps:
+      - id: 115
+        type: integer
+        name: sensor
+        unit: W
+        class: measurement
+  - entity: sensor
+    name: USB-C1 output
+    class: power
+    category: diagnostic
+    dps:
+      - id: 116
+        type: integer
+        name: sensor
+        unit: W
+        class: measurement
+  - entity: sensor
+    name: USB-C2 output
+    class: power
+    category: diagnostic
+    dps:
+      - id: 117
+        type: integer
+        name: sensor
+        unit: W
+        class: measurement
+  - entity: sensor
+    name: USB-C3 output
+    class: power
+    category: diagnostic
+    dps:
+      - id: 118
+        type: integer
+        name: sensor
+        unit: W
+        class: measurement
+  - entity: select
+    name: Standby time
+    translation_key: timer
+    category: config
+    dps:
+      - id: 120
+        type: string
+        name: option
+        mapping:
+          - dps_val: 30_minutes
+            value: 30m
+          - dps_val: 1_hour
+            value: 1h
+          - dps_val: 2_hours
+            value: 2h
+          - dps_val: 6_hours
+            value: 6h
+          - dps_val: 12_hours
+            value: 12h
+          - dps_val: close_timing
+            value: cancel
+  - entity: select
+    name: Display timeout
+    translation_key: timer
+    category: config
+    dps:
+      - id: 121
+        type: string
+        name: option
+        mapping:
+          - dps_val: 10_seconds
+            value: 10s
+          - dps_val: 30_seconds
+            value: 30s
+          - dps_val: 1_minute
+            value: 1m
+          - dps_val: 5_minutes
+            value: 5m
+          - dps_val: 30_minutes
+            value: 30m
+          - dps_val: close_timing
+            value: cancel
+  - entity: select
+    name: AC standby time
+    translation_key: timer
+    category: config
+    dps:
+      - id: 122
+        type: string
+        name: option
+        mapping:
+          - dps_val: 2_hours
+            value: 2h
+          - dps_val: 4_hours
+            value: 4h
+          - dps_val: 6_hours
+            value: 6h
+          - dps_val: 12_hours
+            value: 12h
+          - dps_val: 24_hours
+            value: 24h
+          - dps_val: close_timing
+            value: cancel
+  - entity: number
+    name: AC charging limit
+    class: power
+    category: config
+    icon: "mdi:battery-charging-90"
+    dps:
+      - id: 123
+        type: integer
+        name: value
+        unit: W
+        range:
+          min: 200
+          max: 1800
+        mapping:
+          - step: 200
+  - entity: binary_sensor
+    name: Fast charging
+    icon: "mdi:battery-arrow-up"
+    category: diagnostic
+    dps:
+      - id: 124
+        type: boolean
+        name: sensor
+  - entity: binary_sensor
+    name: Expansion battery
+    class: plug
+    category: diagnostic
+    dps:
+      - id: 125
+        type: boolean
+        name: sensor
+  - entity: switch
+    name: P-Boost
+    icon: "mdi:flash"
+    category: config
+    dps:
+      - id: 126
+        type: boolean
+        name: switch
+  - entity: sensor
+    name: Mode
+    class: enum
+    category: diagnostic
+    dps:
+      - id: 127
+        type: string
+        name: sensor
+        mapping:
+          - dps_val: standby_mode
+            value: Standby
+          - dps_val: eco_mode
+            value: Eco
+  - entity: switch
+    name: Smart charging
+    icon: "mdi:battery-heart-variant"
+    category: config
+    dps:
+      - id: 128
+        type: boolean
+        name: switch
+  - entity: binary_sensor
+    name: Inverter fault
+    class: problem
+    category: diagnostic
+    dps:
+      - id: 134
+        type: bitfield
+        name: sensor
+        mapping:
+          - dps_val: 0
+            value: false
+          - value: true
+      - id: 134
+        type: bitfield
+        name: fault_code
+      - id: 133
+        type: string
+        name: inverter_version
+  - entity: binary_sensor
+    name: Battery fault
+    class: problem
+    category: diagnostic
+    dps:
+      - id: 136
+        type: bitfield
+        name: sensor
+        mapping:
+          - dps_val: 0
+            value: false
+          - value: true
+      - id: 136
+        type: bitfield
+        name: fault_code
+      - id: 132
+        type: string
+        name: bms_version
+      - id: 130
+        type: string
+        name: pd_version
+  - entity: sensor
+    name: Pack 1
+    class: battery
+    category: diagnostic
+    dps:
+      - id: 138
+        type: integer
+        name: sensor
+        unit: "%"
+        class: measurement
+  - entity: sensor
+    name: Pack 2
+    class: battery
+    category: diagnostic
+    dps:
+      - id: 139
+        type: integer
+        name: sensor
+        unit: "%"
+        class: measurement
+  - entity: sensor
+    name: AC output voltage
+    class: voltage
+    category: diagnostic
+    dps:
+      - id: 145
+        type: integer
+        name: sensor
+        unit: V
