@@ -96,6 +96,28 @@ entities:
         name: sensor
         unit: W
         class: measurement
+  - entity: binary_sensor
+    name: AC input power
+    class: power
+    dps:
+      - id: 156
+        type: base64
+        optional: true
+        name: sensor
+        mask: "FFFFFFFF0000000000"
+        mapping:
+          - dps_val: 0
+            value: true
+          - value: false
+      - id: 156
+        type: base64
+        optional: true
+        name: available
+        mask: "FF000000000000000000"
+        mapping:
+          - dps_val: 186
+            value: true
+          - value: false
   - entity: sensor
     name: AC output
     class: power
